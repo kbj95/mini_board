@@ -11,6 +11,9 @@
 		,'내용 20'
 		,NOW()
 	);
+
+	COMMIT;
+	
     -- 한번에 적는법 (오라클은 지원x)
         -- INSERT INTO board_info ( board_title ,board_contents ,board_write_date )
         -- VALUES ('제목 1','내용 1',NOW())
