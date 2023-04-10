@@ -1,4 +1,4 @@
--- 1.erdcloud
+--  erdcloud
 --	게시글 정보테이블
 --	게시글 번호, 게시글 제목, 게시글내용, 작성일, 삭제여부, 삭제일, (작성자)--나중에
 	CREATE DATABASE board;
