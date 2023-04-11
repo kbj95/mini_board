@@ -1,0 +1,10 @@
+@charset "utf-8";
+body {
+    background: #eddedb;
+}
+form {
+    min-width: 600px;
+    width: calc(100vw - 200px);
+    background: #fff;
+    margin: 20px auto;
+}

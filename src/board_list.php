@@ -3,13 +3,14 @@
     define( "URL_DB", DOC_ROOT."mini_board/src/common/db_common.php" );
     include_once( URL_DB );
 
+    // GET 체크
     if ( array_key_exists( "page_num", $_GET ) )
     {
         $page_num = $_GET["page_num"];
     }
     else
     {
-        $page_num = 1;
+        $page_num = 1; //현재 페이지
     }
 
     $limit_num = 5;
@@ -40,15 +41,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="./board_list.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <title>게시판</title>
     <style>
-        table,{
-            margin : 30px;
-        }
     </style>
 </head>
 <body>
-    <table class="table table-striped">
+    <h1>
+        <i class="bi bi-postcard-heart"></i> NOTICE
+    </h1>
+    <table>
         <thead>
             <tr>
                 <th>게시글 번호</th>
@@ -62,8 +65,8 @@
                 {
             ?>
                     <tr>
-                        <td><?php echo $recode["board_no"] ?></td>
-                        <td><?php echo $recode["board_title"] ?></td>
+                        <td class="notice_no"><?php echo $recode["board_no"] ?></td>
+                        <td><a href="board_update.php?board_no=<?php echo $recode["board_no"] ?>"><?php echo $recode["board_title"] ?></a></td>
                         <td><?php echo $recode["board_write_date"] ?></td>
                     </tr>
             <?php
@@ -86,13 +89,29 @@
             </tr> -->
         </tbody>
     </table>
-    <?php
-        for($i = 1; $i <= $max_page_num; $i++)
+    <div class="a_margin">
+        <!-- 페이징 번호 -->
+        <?php
+        if( $page_num != 1 )
         {
-    ?>
-            <a href="board_list.php?page_num=<?php echo $i ?>" class="btn btn-light stretched-link border border-secondary"><?php echo $i ?></a>
-    <?php
+        ?>
+            <a class="a_btn" href="board_list.php?page_num=1">◀</a>
+        <?php
+        }else{
+        ?>
+            <a class="a_btn hidden" href="board_list.php?page_num=1"><</a>
+        <?php
         }
-    ?>
+        ?>
+        <?php
+            for($i = 1; $i <= $max_page_num; $i++)
+            {
+        ?>
+                <a class="a_btn" href="board_list.php?page_num=<?php echo $i ?>"><?php echo $i ?></a>
+        <?php
+            }
+        ?>
+        <a class="a_btn" href="board_list.php?page_num=<?php echo $max_page_num ?>">▶</a>
+    </div>
 </body>
 </html>
