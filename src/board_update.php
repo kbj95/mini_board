@@ -34,7 +34,10 @@
         $result_cnt = update_board_info_no( $arr_info );
 
         // select
-        $result_info = select_board_info_no( $arr_info["board_no"] );
+        // $result_info = select_board_info_no( $arr_info["board_no"] ); // 0412 del
+
+        header( "Location: board_detail.php?board_no=".$arr_post["board_no"] );
+        exit(); // 윗행에서 redirect 했기 떄문에 이후의 소스코드는 실행할 필요가 없다. 
     }
 ?>
 
@@ -52,23 +55,26 @@
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./board_update.css">
+    <link rel="stylesheet" href="./css/board_update.css">
     <title>게시글</title>
 </head>
 <body>
-    <form method="post" action="board_update.php">
-        <legend>글쓰기</legend>
-        <label for="bno">NO </label>
-        <input type="text" name="board_no" id="bno" value="<?php echo $result_info["board_no"] ?>" readonly>
-        <br>
-        <label for="title">Title </label>
-        <input type="text" name="board_title" id="title" value="<?php echo $result_info["board_title"] ?>">
-        <br>
-        <label for="contents">게시글 내용 : </label>
-        <input type="text" name="board_contents" id="contents" value="<?php echo $result_info["board_contents"] ?>">
-        <br>
-        <button type="submit">수정</button>
-        <button type="button"><a href="board_list.php">목록</a></button>
-    </form>
+    <div id="wrap">
+        <form method="post" action="board_update.php">
+            <legend></legend>
+            <label for="bno">NO </label>
+            <input type="text" name="board_no" id="bno" value="<?php echo $result_info["board_no"] ?>" readonly>
+            <br>
+            <label for="title">Title </label>
+            <input type="text" name="board_title" id="title" value="<?php echo $result_info["board_title"] ?>">
+            <br>
+            <label for="contents">게시글 내용 : </label>
+            <input type="text" name="board_contents" id="contents" value="<?php echo $result_info["board_contents"] ?>">
+            <br>
+            <button type="submit">수정</button>
+            <button type="button"><a href="board_detail.php?board_no=<?php echo $result_info["board_no"] ?>">취소</a></button>
+        </form>
+        <button type="button"><a href="board_list.php">리스트로</a></button>
+    </div>
 </body>
 </html>

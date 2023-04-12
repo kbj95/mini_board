@@ -1,0 +1,25 @@
+@charset "utf-8";
+* {
+    color: #333;
+}
+a {
+    text-decoration: none;
+}
+#wrap {
+    background: #eddedb;
+    width: 100vw;
+    height: calc(100vh - 200px);
+}
+form {
+    min-width: 600px;
+    width: calc(100vw - 200px);
+    background: #fff;
+    margin: 20px auto;
+    border: 1px solid #bf978f;
+}
+button {
+    border: 1px solid #bf978f;
+    border-radius: 10px;
+    color: #bf978f;
+    padding: 10px 15px;
+}

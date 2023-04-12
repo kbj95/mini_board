@@ -13,7 +13,7 @@
         $page_num = 1; //현재 페이지
     }
 
-    $limit_num = 5;
+    $limit_num = 10;
 
     // 게시판 정보 테이블 전체 카운트 획득
     $result_cnt = select_board_info_cnt();
@@ -41,77 +41,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="./board_list.css">
+    <link rel="stylesheet" href="./css/board_list.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <title>게시판</title>
     <style>
     </style>
 </head>
 <body>
-    <h1>
-        <i class="bi bi-postcard-heart"></i> NOTICE
-    </h1>
-    <table>
-        <thead>
-            <tr>
-                <th>게시글 번호</th>
-                <th>게시글 제목</th>
-                <th>작성일</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div id="wrap">
+        <div class="snowflakes" aria-hidden="true">
+            <div class="snowflake">
+            <!-- ❅❆❄ -->
+            ♥
+            </div>
+            <div class="snowflake">
+            ♥
+            </div>
+            <div class="snowflake">
+            ♥
+            </div>
+            <div class="snowflake">
+            ♥
+            </div>
+            <div class="snowflake">
+            ♥
+            </div>
+            <div class="snowflake">
+            ♥
+            </div>
+            <div class="snowflake">
+            ♥
+            </div>
+            <div class="snowflake">
+            ♥
+            </div>
+            <div class="snowflake">
+            ♥
+            </div>
+            <div class="snowflake">
+            ♥
+            </div>
+        </div>
+        <h1>
+            <i class="bi bi-postcard-heart"></i> NOTICE
+        </h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>게시글 번호</th>
+                    <th>게시글 제목</th>
+                    <th>작성일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    foreach( $result_paging as $recode )
+                    {
+                ?>
+                        <tr>
+                            <td class="notice_no"><?php echo $recode["board_no"] ?></td>
+                            <td><a href="board_detail.php?board_no=<?php echo $recode["board_no"] ?>"><?php echo $recode["board_title"] ?></a></td>
+                            <td><?php echo $recode["board_write_date"] ?></td>
+                        </tr>
+                <?php
+                    }
+                ?>
+            </tbody>
+        </table>
+        <div class="a_margin">
+            <!-- 페이징 번호 -->
             <?php
-                foreach( $result_paging as $recode )
+            if( $page_num != 1 )
+            {
+            ?>
+                <a class="a_btn" href="board_list.php?page_num=1">◀</a>
+            <?php
+            }else{
+            ?>
+                <a class="a_btn hidden" href="board_list.php?page_num=1"><</a>
+            <?php
+            }
+            ?>
+            <?php
+                for($i = 1; $i <= $max_page_num; $i++)
                 {
             ?>
-                    <tr>
-                        <td class="notice_no"><?php echo $recode["board_no"] ?></td>
-                        <td><a href="board_update.php?board_no=<?php echo $recode["board_no"] ?>"><?php echo $recode["board_title"] ?></a></td>
-                        <td><?php echo $recode["board_write_date"] ?></td>
-                    </tr>
+                    <a class="a_btn" href="board_list.php?page_num=<?php echo $i ?>"><?php echo $i ?></a>
             <?php
                 }
             ?>
-            <!-- <tr>
-                <td>1</td>
-                <td>제목1</td>
-                <td>2023-04-08</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>제목2</td>
-                <td>2023-04-09</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>제목3</td>
-                <td>2023-04-10</td>
-            </tr> -->
-        </tbody>
-    </table>
-    <div class="a_margin">
-        <!-- 페이징 번호 -->
-        <?php
-        if( $page_num != 1 )
-        {
-        ?>
-            <a class="a_btn" href="board_list.php?page_num=1">◀</a>
-        <?php
-        }else{
-        ?>
-            <a class="a_btn hidden" href="board_list.php?page_num=1"><</a>
-        <?php
-        }
-        ?>
-        <?php
-            for($i = 1; $i <= $max_page_num; $i++)
-            {
-        ?>
-                <a class="a_btn" href="board_list.php?page_num=<?php echo $i ?>"><?php echo $i ?></a>
-        <?php
-            }
-        ?>
-        <a class="a_btn" href="board_list.php?page_num=<?php echo $max_page_num ?>">▶</a>
+            <a class="a_btn" href="board_list.php?page_num=<?php echo $max_page_num ?>">▶</a>
+        </div>
     </div>
 </body>
 </html>

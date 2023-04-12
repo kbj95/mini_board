@@ -1,4 +1,10 @@
 <?php
+// ---------------------------------
+// 함수명	: db_conn
+// 기능		: DB Connection
+// 파라미터	: Obj	&$param_conn
+// 리턴값	: 없음
+// ---------------------------------
 function db_conn( &$param_conn )
 {
     $host = "localhost";
@@ -24,7 +30,12 @@ function db_conn( &$param_conn )
         throw new Exception( $e->getMessage() );
     }
 }
-
+// ---------------------------------
+// 함수명	: select_board_info_paging
+// 기능		: 페이징_게시판 정보 검색
+// 파라미터	: Array		&$param_arr
+// 리턴값	: Array		$result
+// ---------------------------------
 function select_board_info_paging( &$param_arr )
 {
     $sql =
@@ -68,6 +79,12 @@ function select_board_info_paging( &$param_arr )
     return $result;
 }
 
+// ---------------------------------
+// 함수명	: select_board_info_cnt
+// 기능		: 게시판 정보 테이블 레코드 카운트 검색
+// 파라미터	: 없음
+// 리턴값	: Array		$result
+// ---------------------------------
 function select_board_info_cnt()
 {
     $sql =
@@ -100,7 +117,13 @@ function select_board_info_cnt()
     return $result;
 }
 
-// update // 게시판 특정 게시글 정보
+//-------------------------------------------------------------------------------
+// ---------------------------------
+// 함수명	: select_board_info_no
+// 기능		: 게시판 특정 게시글 정보 검색
+// 파라미터	: INT		&$param_no
+// 리턴값	: Array		$result
+// ---------------------------------
 function select_board_info_no( &$param_no )
 {
     $sql =
@@ -108,6 +131,7 @@ function select_board_info_no( &$param_no )
         ." board_no "
         ." ,board_title "
         ." ,board_contents "
+        ." ,board_write_date" // 0412 작성일 추가
         ." FROM "
         ."    board_info "
         ." WHERE "
@@ -139,7 +163,13 @@ function select_board_info_no( &$param_no )
 
     return $result[0];
 }
-// 게시판 특정 게시글 정보 수정 // select랑 다름!!! update,insert,delete는 아래참조
+// select랑 다름!!! update,insert,delete는 아래참조
+// ---------------------------------
+// 함수명	: update_board_info_no
+// 기능		: 게시판 특정 게시글 정보 수정
+// 파라미터	: Array		&$param_arr
+// 리턴값	: INT/STRING	$result_cnt/ERRMSG
+// ---------------------------------
 function update_board_info_no( &$param_arr )
 {
     $sql =
@@ -181,6 +211,52 @@ function update_board_info_no( &$param_arr )
 
     return $result_cnt;
 }
+
+// ---------------------------------
+// 함수명	: delete_board_info_no
+// 기능		: 게시판 특정 게시글 정보 삭제플러그 갱신
+// 파라미터	: Array		&$param_no
+// 리턴값	: INT/STRING	$result_cnt/ERRMSG
+// ---------------------------------
+function delete_board_info_no( &$param_no )
+{
+    $sql =
+        " UPDATE "
+        ." board_info "
+        ." SET "
+        ." board_del_flg = '1' "
+        ." ,board_del_date = NOW() "
+        ." WHERE "
+        ." board_no = :board_no "
+        ;
+    
+    $arr_prepare =
+        array(
+            ":board_no" => $param_no
+        );
+
+    $conn = null;
+    try
+    {
+        db_conn( $conn );
+        $conn->beginTransaction();
+        $stmt = $conn->prepare( $sql );
+        $stmt->execute( $arr_prepare );
+        $result_cnt = $stmt->rowCount();
+        $conn->commit();
+    }
+    catch( Exception $e )
+    {
+        $conn->rollback();
+        return $e->getMessage();
+    }
+    finally
+    {
+        $conn = null;
+    }
+    return $result_cnt;
+}
+
 
 // TODO : test Start
 // $arr =
