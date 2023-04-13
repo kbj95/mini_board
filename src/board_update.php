@@ -1,6 +1,7 @@
 <?php
-    define( "SRC_ROOT", $_SERVER["DOCUMENT_ROOT"]."/mini_board/src/" );
-    define( "URL_DB", SRC_ROOT."common/db_common.php" );
+    define( "SRC_ROOT", $_SERVER["DOCUMENT_ROOT"]."/" );
+    define( "URL_DB", SRC_ROOT."mini_board/src/common/db_common.php" );
+    define( "URL_HEADER", SRC_ROOT."mini_board/src/board_header.php");
     include_once( URL_DB ); // include_once("C:/Apache24/htdocs/mini_board/src/common/db_common.php");
 
     // Request Method를 획득
@@ -55,11 +56,16 @@
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/board.css">
     <link rel="stylesheet" href="./css/board_update.css">
     <title>게시글</title>
 </head>
 <body>
+    <?php include_once( URL_HEADER ) ?>
     <div id="wrap">
+        <img src="./img/1.png" class="bk_img1">
+        <img src="./img/2.png" class="bk_img2">
+        <div class="title">UPDATE</div>
         <form method="post" action="board_update.php">
             <legend></legend>
             <label for="bno">NO </label>

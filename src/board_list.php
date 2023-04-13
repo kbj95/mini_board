@@ -1,6 +1,7 @@
 <?php
-    define( "DOC_ROOT", $_SERVER["DOCUMENT_ROOT"]."/" );
-    define( "URL_DB", DOC_ROOT."mini_board/src/common/db_common.php" );
+    define( "SRC_ROOT", $_SERVER["DOCUMENT_ROOT"]."/" );
+    define( "URL_DB", SRC_ROOT."mini_board/src/common/db_common.php" );
+    define( "URL_HEADER", SRC_ROOT."mini_board/src/board_header.php");
     include_once( URL_DB );
 
     // GET 체크
@@ -42,13 +43,17 @@
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/board_list.css">
+    <link rel="stylesheet" href="./css/board.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <title>게시판</title>
     <style>
     </style>
 </head>
 <body>
+    <?php include_once( URL_HEADER ) ?>
     <div id="wrap">
+        <img src="./img/1.png" class="bk_img1">
+        <img src="./img/2.png" class="bk_img2">
         <div class="snowflakes" aria-hidden="true">
             <div class="snowflake">
             <!-- ❅❆❄ -->
@@ -82,9 +87,10 @@
             ♥
             </div>
         </div>
-        <h1>
-            <i class="bi bi-postcard-heart"></i> NOTICE
-        </h1>
+        <div class="title">
+            <i class="bi bi-postcard-heart"></i> BOARD LIST
+        </div>
+        <button type="button" class="a_btn"><a href="board_insert.php" class="fc_red">게시글 작성</a></button>
         <table>
             <thead>
                 <tr>
@@ -100,8 +106,8 @@
                 ?>
                         <tr>
                             <td class="notice_no"><?php echo $recode["board_no"] ?></td>
-                            <td><a href="board_detail.php?board_no=<?php echo $recode["board_no"] ?>"><?php echo $recode["board_title"] ?></a></td>
-                            <td><?php echo $recode["board_write_date"] ?></td>
+                            <td class="notice_title"><a href="board_detail.php?board_no=<?php echo $recode["board_no"] ?>"><?php echo $recode["board_title"] ?></a></td>
+                            <td class="notice_date"><?php echo $recode["board_write_date"] ?></td>
                         </tr>
                 <?php
                     }

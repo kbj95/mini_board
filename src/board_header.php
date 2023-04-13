@@ -1,0 +1,1 @@
+<h1><a href="board_list.php"><img src="img/logo.png"></a></h1>

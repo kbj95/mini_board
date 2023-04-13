@@ -5,11 +5,11 @@
 a {
     text-decoration: none;
 }
-#wrap {
+/* #wrap {
     background: #eddedb;
     width: 100vw;
     height: calc(100vh - 200px);
-}
+} */
 form {
     min-width: 600px;
     width: calc(100vw - 200px);

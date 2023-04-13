@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+table {
+    margin: 30px auto;
+    min-width: 600px;
+    width: calc(100vw - 200px);
+    border: 1px solid #ccc;
+    text-align: left;
+}

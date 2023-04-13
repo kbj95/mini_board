@@ -1,34 +1,17 @@
 @charset "utf-8";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css");
 
-body {
-    background-color: #eddedb;
-}
-#wrap {
-    width: calc(100vw - 100px);
-    min-width: 800px;
-    min-height: 600px;
-    background: #ffffff;
-    border-radius: 20px;
-    margin: auto;
-}
-a {
-    text-decoration: none;
-    color: rgb(82, 81, 81);
-}
-h1 {
-    text-align: center;
-    margin-top: 30px;
-}
+/* table */
 table {
     min-width: 600px;
     width: calc(100vw - 200px);
     border: 1px solid #bf978f;
-    margin: 20px auto;
-    box-shadow: 3px 3px 5px #bf978f;
+    margin: 50px auto;
+    box-shadow: 3px 3px 8px rgba(208, 56, 41, 0.6);
 }
 table thead {
     background-color: #eddedb;
+    color: #333;
     text-align: center;
     border-bottom: 1px solid #bf978f;
     height: 30px;
@@ -49,40 +32,53 @@ tbody > tr > td {
     height: 30px;
     line-height: 30px;
 }
-
+tbody tr:hover {
+    background-color: rgba(208, 56, 41, 0.95);
+    color: #fff;
+}
+tbody tr:hover a {
+    color: #fff;
+}
 .notice_no {
+    min-width: 100px;
     width: 150px;
 }
+.notice_date {
+    width: 400px;
+}
+.notice_title {
+    min-width: 300px;
+}
 
+/* button */
 .a_margin {
+    position: absolute;
+    bottom: 40px;
+    z-index: 5;
     min-width: 600px;
     width: calc(100vw - 200px);
     margin: 30px auto;
     text-align: center;
 }
-.a_btn {
-    text-decoration: none;
-    border: 1px solid #bf978f;
-    border-radius: 10px;
-    color: #bf978f;
-    padding: 10px 15px;
-    vertical-align: middle;
-}
-.a_btn:hover {
-    background-color: #eddedb;
-    color: #fff;
-}
-
 .hidden {
     visibility: hidden;
+}
+button.a_btn {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    background: #fff;
+}
+.fc_red {
+    color: #d03829;
 }
 
 /* customizable snowflake styling */
 .snowflake {
-    color: #fff;
+    color: #d03829;
     font-size: 1.5em;
     font-family: Arial;
-    text-shadow: 0 0 1px rgb(248, 172, 185);
+    text-shadow: 0 0 1px rgb(252, 220, 225);
 }
 
 @-webkit-keyframes snowflakes-fall {
@@ -199,7 +195,7 @@ tbody > tr > td {
 /* Demo Purpose Only*/
 .demo {
     font-family: "Raleway", sans-serif;
-    color: pink;
+    color: red;
     display: block;
     margin: 0 auto;
     padding: 15px 0;
@@ -207,5 +203,5 @@ tbody > tr > td {
 }
 .demo a {
     font-family: "Raleway", sans-serif;
-    color: pink;
+    color: red;
 }
