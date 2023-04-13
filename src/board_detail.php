@@ -28,29 +28,30 @@ $result_info = select_board_info_no( $arr_get["board_no"] );
         <img src="./img/1.png" class="bk_img1">
         <img src="./img/2.png" class="bk_img2">
         <div class="title">BOARD</div>
-        <table class="contents">
+        <table>
             <thead>
                 <tr>
                     <th>게시글 번호 : <?php echo $result_info["board_no"] ?></th>
                     <th>게시글 제목 : <?php echo $result_info["board_title"] ?></th>
                     <th>작성일 : <?php echo $result_info["board_write_date"] ?></th>
-                <tr>
-            <thead>
+                </tr>
+            </thead>
             <tbody>
                 <tr>
-                    <th>게시글 내용 : <?php echo $result_info["board_contents"] ?>
-                    </th>
-                    <td colspan="2"></td>
+                    <th>게시글 내용 </th>
+                    <td colspan="2"><?php echo $result_info["board_contents"] ?></td>
                 </tr>
             </tbody>
         </table>
-        <button type="button">
-            <a href="board_update.php?board_no=<?php echo $result_info["board_no"] ?>">수정</a>
-        </button>
-        <button type="button">
-            <a href="board_delete.php?board_no=<?php echo $result_info["board_no"] ?>">삭제
-            </a>
-        </button>
+        <div class="btn_area">
+            <button type="button" class="a_btn">
+                <a class="fc_red" href="board_update.php?board_no=<?php echo $result_info["board_no"] ?>">수정</a>
+            </button>
+            <button type="button" class="a_btn">
+                <a class="fc_red" href="board_delete.php?board_no=<?php echo $result_info["board_no"] ?>">삭제
+                </a>
+            </button>
+        </div>
     </div>
 </body>
 </html>

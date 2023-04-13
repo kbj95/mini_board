@@ -1,9 +1,28 @@
 @charset "utf-8";
 
 table {
-    margin: 30px auto;
+    margin: 50px auto;
     min-width: 600px;
     width: calc(100vw - 200px);
-    border: 1px solid #ccc;
+    border: 1px solid #bf978f;
     text-align: left;
+    border-collapse : collapse;
+}
+table thead tr{
+    background-color: #eddedb;
+    color: #333;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #bf978f;
+}
+tbody{
+    height: 300px;
+    color: #333;
+}
+
+button{
+    background: #fff;
+}
+.btn_area{
+    margin-left: 50px;
 }

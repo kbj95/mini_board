@@ -49,6 +49,7 @@ h1 img {
     color: #d03829;
     padding: 10px 15px;
     vertical-align: middle;
+    background: #ffffff;
 }
 .a_btn:hover {
     background-color: #d03829;
@@ -56,4 +57,7 @@ h1 img {
 }
 .a_btn:hover a {
     color: #fff;
+}
+.fc_red {
+    color: #d03829;
 }
