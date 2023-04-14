@@ -67,20 +67,30 @@
         <img src="./img/2.png" class="bk_img2">
         <div class="title">UPDATE</div>
         <form method="post" action="board_update.php">
-            <legend></legend>
-            <label for="bno">NO </label>
-            <input type="text" name="board_no" id="bno" value="<?php echo $result_info["board_no"] ?>" readonly>
-            <br>
-            <label for="title">Title </label>
-            <input type="text" name="board_title" id="title" value="<?php echo $result_info["board_title"] ?>">
-            <br>
-            <label for="contents">게시글 내용 : </label>
-            <input type="text" name="board_contents" id="contents" value="<?php echo $result_info["board_contents"] ?>">
-            <br>
-            <button type="submit">수정</button>
-            <button type="button"><a href="board_detail.php?board_no=<?php echo $result_info["board_no"] ?>">취소</a></button>
+            <ul class="flex ul_top">
+                <li>
+                    NO.<?php echo $result_info["board_no"] ?>
+                </li>
+                <li>
+                    <input type="text" name="board_title" id="title" value="<?php echo $result_info["board_title"] ?>">
+                </li>
+            </ul>
+            <ul class="flex contents">
+                <li>내용</li>
+                <li>
+                    <textarea cols="100" rows="10"><?php  echo $result_info["board_contents"] ?></textarea>
+                </li>
+            </ul>
+                <!-- <tbody>
+                    <tr>
+                        <th><label for="contents">게시글 내용 : </label></th>
+                        <td<textarea cols="100" rows="10"><?php // echo $result_info["board_contents"] ?></textarea>></td>
+                    </tr>
+                </tbody> -->
+            <button type="submit" class="a_btn">확인</button>
+            <button type="button" class="a_btn"><a class="fc_red" href="board_detail.php?board_no=<?php echo $result_info["board_no"] ?>">취소</a></button>
         </form>
-        <button type="button"><a href="board_list.php">리스트로</a></button>
+        <button type="button" class="a_btn"><a class="fc_red" href ="board_list.php">LIST</a></button>
     </div>
 </body>
 </html>

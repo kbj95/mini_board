@@ -31,14 +31,14 @@ $result_info = select_board_info_no( $arr_get["board_no"] );
         <table>
             <thead>
                 <tr>
-                    <th>게시글 번호 : <?php echo $result_info["board_no"] ?></th>
-                    <th>게시글 제목 : <?php echo $result_info["board_title"] ?></th>
-                    <th>작성일 : <?php echo $result_info["board_write_date"] ?></th>
+                    <th class="th1">NO.<?php echo $result_info["board_no"] ?></th>
+                    <th class="th_title"><?php echo $result_info["board_title"] ?></th>
+                    <th class="th_date"><?php echo $result_info["board_write_date"] ?></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th>게시글 내용 </th>
+                    <th class="th1">게시글 내용 </th>
                     <td colspan="2"><?php echo $result_info["board_contents"] ?></td>
                 </tr>
             </tbody>

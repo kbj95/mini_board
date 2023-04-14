@@ -1,28 +1,45 @@
 @charset "utf-8";
 
 table {
-    margin: 50px auto;
+    margin: 50px auto 30px;
     min-width: 600px;
     width: calc(100vw - 200px);
     border: 1px solid #bf978f;
     text-align: left;
-    border-collapse : collapse;
+    border-collapse: collapse;
 }
-table thead tr{
+table thead tr {
     background-color: #eddedb;
     color: #333;
     height: 30px;
     line-height: 30px;
     border-bottom: 1px solid #bf978f;
 }
-tbody{
-    height: 300px;
+.th_date {
+    float: right;
+    margin-right: 10px;
+}
+.th_title {
+    text-indent: 10px;
+}
+tbody {
+    height: 350px;
     color: #333;
+    vertical-align: top;
+    text-indent: 10px;
+}
+.th1 {
+    background-color: #eddedb;
+    border-right: 1px solid #bf978f;
+    vertical-align: middle;
+    text-align: center;
+    min-width: 100px;
+    width: 150px;
 }
 
-button{
+button {
     background: #fff;
 }
-.btn_area{
+.btn_area {
     margin-left: 50px;
 }
