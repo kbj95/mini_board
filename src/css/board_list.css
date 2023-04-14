@@ -44,7 +44,7 @@ tbody tr:hover a {
     width: 150px;
 }
 .notice_date {
-    width: 400px;
+    max-width: 200px;
 }
 .notice_title {
     min-width: 300px;

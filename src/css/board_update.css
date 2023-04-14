@@ -5,14 +5,15 @@ form {
     width: calc(100vw - 200px);
     background: #f8f7f3;
     margin: 50px auto;
-    border: 1px solid #bf978f;
     padding: 0;
 }
 input {
     border: none;
     background: #fff;
-    height: 28px;
+    height: 25px;
     outline: none;
+    min-width: 400px;
+    width: calc(100vw - 350px);
 }
 .flex {
     display: flex;
@@ -27,13 +28,25 @@ li {
 .ul_top {
     height: 30px;
     line-height: 30px;
-    text-indent: 10px;
     background: #eddedb;
-    border-bottom: 1px solid #bf978f;
+    border: 1px solid #bf978f;
 }
-.ul_top :first-child {
-    margin-left: 30px;
+.li_width {
+    min-width: 100px;
+    width: 150px;
+    text-align: center;
 }
 .contents {
     margin-top: 10px;
+}
+textarea {
+    min-width: 400px;
+    width: calc(100vw - 360px);
+    height: 350px;
+    border: none;
+    resize: none;
+    outline: none;
+}
+.btn_area {
+    position: relative;
 }

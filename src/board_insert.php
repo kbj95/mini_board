@@ -24,6 +24,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/board.css">
+    <link rel="stylesheet" href="./css/board_insert.css">
     <title>게시글 작성</title>
 </head>
 <body>
@@ -33,14 +34,20 @@
         <img src="./img/2.png" class="bk_img2">
         <div class="title">WRITE</div>
         <form method="post" action="board_insert.php">
-            <label for="title">Title </label>
-            <input type="text" name="board_title" id="title">
-            <br>
-            <label for="contents">게시글 내용 : </label>
-            <input type="text" name="board_contents" id="contents">
-            <br>
-            <button type="submit">작성</button>
-            <button type="button"><a href="board_list.php">취소</a></button>
+            <table>
+                <tr>
+                    <th>제목</th>
+                    <td><input type="text" name="board_title" id="title" placeholder="제목을 입력하세요" autofocus></td>
+                </tr>
+                <tr>
+                    <th>내용</th>
+                    <td><textarea name="board_contents" id="contents" placeholder="내용을 입력해주세요"></textarea>
+                </tr>
+            </table>
+            <div class="btn_area">
+                <button type="submit" class="a_btn">작성</button>
+                <button type="button" class="a_btn"><a href="board_list.php" class="fc_red">취소</a></button>
+            </div>
         </form>
     </div>
 </body>

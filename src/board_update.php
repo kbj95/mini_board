@@ -33,7 +33,7 @@
 
         // update
         $result_cnt = update_board_info_no( $arr_info );
-
+        // var_dump($result_cnt);
         // select
         // $result_info = select_board_info_no( $arr_info["board_no"] ); // 0412 del
 
@@ -58,7 +58,12 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/board.css">
     <link rel="stylesheet" href="./css/board_update.css">
-    <title>게시글</title>
+    <title>게시글</title> 
+    <script>
+        // 1번째 input 태그 처리
+        const $title = document.getElementById("title");
+        $title.value = $result_info['board_title']; // 새로 value를 설정 해줘야 커서가 뒤로 간다.
+    </script>
 </head>
 <body>
     <?php include_once( URL_HEADER ) ?>
@@ -68,29 +73,26 @@
         <div class="title">UPDATE</div>
         <form method="post" action="board_update.php">
             <ul class="flex ul_top">
-                <li>
+                <li class="li_width">
                     NO.<?php echo $result_info["board_no"] ?>
+                    <input type="hidden" name="board_no" value="<?php echo $result_info["board_no"] ?>">
                 </li>
                 <li>
-                    <input type="text" name="board_title" id="title" value="<?php echo $result_info["board_title"] ?>">
+                    <input type="text" name="board_title" id="title" value="<?php echo $result_info["board_title"] ?>" autofocus>
                 </li>
             </ul>
             <ul class="flex contents">
-                <li>내용</li>
+                <li class="li_width">내용</li>
                 <li>
-                    <textarea cols="100" rows="10"><?php  echo $result_info["board_contents"] ?></textarea>
+                    <textarea name="board_contents"><?php echo $result_info["board_contents"] ?></textarea>
                 </li>
             </ul>
-                <!-- <tbody>
-                    <tr>
-                        <th><label for="contents">게시글 내용 : </label></th>
-                        <td<textarea cols="100" rows="10"><?php // echo $result_info["board_contents"] ?></textarea>></td>
-                    </tr>
-                </tbody> -->
-            <button type="submit" class="a_btn">확인</button>
-            <button type="button" class="a_btn"><a class="fc_red" href="board_detail.php?board_no=<?php echo $result_info["board_no"] ?>">취소</a></button>
+            <div class="btn_area">
+                <button type="submit" class="a_btn">확인</button>
+                <button type="button" class="a_btn"><a class="fc_red" href="board_detail.php?board_no=<?php echo $result_info["board_no"] ?>">취소</a></button>
+            </div>
         </form>
-        <button type="button" class="a_btn"><a class="fc_red" href ="board_list.php">LIST</a></button>
+        <!-- <button type="button" class="a_btn"><a class="fc_red" href ="board_list.php">LIST</a></button> -->
     </div>
 </body>
 </html>

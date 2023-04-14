@@ -32,6 +32,7 @@
         );
     $result_paging = select_board_info_paging( $arr_prepare );
     // print_r( $max_page_num );
+
 ?>
 
 <!DOCTYPE html>
@@ -106,7 +107,21 @@
                 ?>
                         <tr>
                             <td class="notice_no"><?php echo $recode["board_no"] ?></td>
-                            <td class="notice_title"><a href="board_detail.php?board_no=<?php echo $recode["board_no"] ?>"><?php echo $recode["board_title"] ?></a></td>
+                            <td class="notice_title">
+                                <a href="board_detail.php?board_no=<?php echo $recode["board_no"] ?>">
+                                <!-- // echo mb_substr($recode["board_title"],0,18) -->
+                                <?php 
+                                    if(mb_strlen( $recode["board_title"] ) > 18 )
+                                    {
+                                        echo  mb_substr($recode["board_title"],0,18)."...";
+                                    }
+                                    else
+                                    {
+                                        echo $recode["board_title"];
+                                    }
+                                ?>
+                                </a>
+                            </td>
                             <td class="notice_date"><?php echo $recode["board_write_date"] ?></td>
                         </tr>
                 <?php
